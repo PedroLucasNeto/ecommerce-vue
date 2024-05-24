@@ -1,8 +1,9 @@
 <template>
   <details class="dropdown">
     <summary class="m-1 btn">
-      <slot name="title"></slot>
-      Gerenciar
+      <slot name="title">
+        Gerenciar
+      </slot>
     </summary>
     <ul class="p-2 shadow menu dropdown-content z-[1] bg-lightblue rounded-box w-fit">
       <slot name="options">
