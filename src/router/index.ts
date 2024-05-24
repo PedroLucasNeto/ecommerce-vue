@@ -17,7 +17,25 @@ const router = createRouter({
     {
       path: '/management',
       name: 'management',
-      component: () => import('@/pages/Management.vue')
+      component: () => import('@/pages/management/Management.vue'),
+      children: [
+        {
+          path: 'users',
+          name: 'users',
+          component: () => import('@/pages/management/components/Users.vue')
+        },
+        {
+          path: 'products',
+          name: 'products',
+          component: () => import('@/pages/management/components/Products.vue')
+        },
+        {
+          path: 'orders',
+          name: 'orders',
+          component: () => import('@/pages/management/components/Orders.vue')
+        }
+      ],
+     
     }
     // {
     //   path: '/about',

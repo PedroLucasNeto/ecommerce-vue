@@ -5,7 +5,7 @@ import Header from './components/Header.vue'
 <template>
   <Header />
   <Transition name="fade" mode="out-in">
-    <div class="container min-w-full max-w-full">
+    <div class="min-w-full max-w-full">
       <RouterView />
     </div>
   </Transition>
