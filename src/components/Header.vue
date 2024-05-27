@@ -3,10 +3,10 @@
     <div>LOGO</div>
 
     <ul class="flex justify-between space-x-4 ">
-      <RouterLink to="/home">Produtos</RouterLink>
-      <RouterLink to="/home">Carrinho</RouterLink>
+      <RouterLink to="/home">Início</RouterLink>
+      <RouterLink to="/cart">Carrinho</RouterLink>
       <RouterLink to="/management" v-if="isAdmin">Gerenciamento</RouterLink>
-      <RouterLink to="/home">Sair</RouterLink>
+      <RouterLink to="/">Sair</RouterLink>
       <!-- <RouterLink to="/home">Login</RouterLink> -->
     </ul>
   </nav>
