@@ -1,6 +1,6 @@
 <template>
   <button :class="classes" @click="method">
-    <slot name="content">
+    <slot>
       Click me
     </slot>
   </button>

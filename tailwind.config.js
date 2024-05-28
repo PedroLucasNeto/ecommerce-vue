@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
-  ],  theme: {
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  theme: {
     extend: {
-       backgroundColor: {
+      daisyui: {
+        themes: ['light', 'dark']
+      },
+      backgroundColor: {
         darkblue: '#101720',
         lightblue: '#E6F1F1',
         darknude: '#DEBCB0',
@@ -23,18 +24,15 @@ export default {
         lightyellow: '#E6E6A8',
         darkyellow: '#9E9E7A',
         lightorange: '#E6CBA8',
-        darkorange: '#9E847A',
+        darkorange: '#9E847A'
       },
       textColor: {
         darkblue: '#101720',
         darknude: '#DEBCB0',
         lightnude: '#FFF4EF',
         darkbrown: '#BF573F'
-      },
-    },
+      }
+    }
   },
-  plugins: [
-    require('daisyui'),
-  ],
+  plugins: [require('daisyui')]
 }
-

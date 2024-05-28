@@ -7,28 +7,29 @@
       </div>
       <Dropdown v-model="adminNavItems" v-model:method="adicionarItem"></Dropdown>
     </nav>
-    <Button :classes="'btn btn-primary text-white'"></Button>
-    <Searchbar></Searchbar>
     <RouterView />
   </div>
 </template>
 
 <script setup lang="ts">
-import Searchbar from '@/components/Searchbar.vue';
 import Dropdown from '@/components/Dropdown.vue';
-import Button from '@/components/Button.vue';
 import { provide, ref } from 'vue';
 
-function adicionarItem () {
+function adicionarItem() {
   adminNavItems.value.push({ name: 'Novo item', path: '/management/new' });
 }
 
-provide('method', alert);
+provide('method', anotheAlert);
+
 const adminNavItems = ref([
   { name: 'Produtos', path: '/management/products' },
   { name: 'Usuarios', path: '/management/users' },
   { name: 'Pedidos', path: '/management/orders' }
 ])
+
+function anotheAlert() {
+  adminNavItems.value.push({ name: 'Novo item', path: '/management/new' });
+}
 </script>
 
 <style scoped></style>

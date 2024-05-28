@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import Header from './components/Header.vue'
-</script>
-
 <template>
   <Header />
   <Transition name="fade" mode="out-in">
@@ -10,5 +6,9 @@ import Header from './components/Header.vue'
     </div>
   </Transition>
 </template>
+<script setup lang="ts">
+import Header from './components/Header.vue'
+
+</script>
 
 <style></style>
