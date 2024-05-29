@@ -4,7 +4,7 @@
 
     <ul class="flex justify-between space-x-4 items-center">
       <RouterLink to="/home">Início</RouterLink>
-      <RouterLink to="/cart">Carrinho</RouterLink>
+      <RouterLink to="/cart" v-if="!isAdmin">Carrinho</RouterLink>
       <RouterLink to="/management" v-if="isAdmin">Gerenciamento</RouterLink>
       <RouterLink to="/">Sair</RouterLink>
       <input type="checkbox" data-set-theme="light,dark" class="toggle toggle-primary" checked />

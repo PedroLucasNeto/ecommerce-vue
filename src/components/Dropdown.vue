@@ -1,5 +1,5 @@
 <template>
-  <details class="dropdown" ref="dropdown">
+  <details class="dropdown bg-" ref="dropdown">
     <summary class="m-1 btn">
       <slot name="title">
         Gerenciar
