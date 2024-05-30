@@ -1,10 +1,11 @@
 <template>
   <div>
-    <nav class="flex justify-between p-4">
+    <nav class="flex justify-between p-4 items-center">
       <div>
         <h1 class="">Bem vindo <span class="font-bold">{Username}</span></h1>
         <h2>Mensagem...</h2>
       </div>
+      <h1 class="font-bold md:mr-20">{{ title }}</h1>
       <Dropdown v-model="dropdownList"></Dropdown>
     </nav>
     <div v-show="toggleStatusBar" class="flex flex-col justify-center items-center gap-4">
@@ -39,6 +40,17 @@ const dropdownList = computed(() => {
   }
   return newList;
 })
+
+const titles = {
+  management: 'Gestão',
+  products: 'Produtos',
+  users: 'Usuarios',
+  orders: 'Pedidos'
+};
+
+const title = computed(() => {
+  return titles[route.name];
+});
 
 
 </script>

@@ -27,8 +27,19 @@ const router = createRouter({
         {
           path: 'products',
           name: 'products',
-          component: () => import('@/pages/management/components/Products.vue')
+          component: () => import('@/pages/management/components/products/Products.vue')
         },
+        {
+          path: 'retrieve-product/:id',
+          name: 'retrieveProduct',
+          component: () => import('@/pages/management/components/products/RetrieveProduct.vue')
+        },
+        {
+          path: 'edit-product',
+          name: 'editProduct',
+          component: () => import('@/pages/management/components/products/EditProduct.vue')
+        },
+
         {
           path: 'orders',
           name: 'orders',
