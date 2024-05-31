@@ -7,9 +7,12 @@
   </Transition>
   <Footer />
 </template>
-<script setup lang="ts">
+<script setup>
+import { onMounted } from 'vue'
 import Footer from './components/Footer.vue';
 import Header from './components/Header.vue'
+import { themeChange } from 'theme-change'
+
 
 </script>
 
