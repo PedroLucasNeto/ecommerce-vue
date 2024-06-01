@@ -25,7 +25,6 @@ import CtaImageCard from '@/components/CtaImageCard.vue';
 const route = useRoute();
 
 const toggleStatusBar = computed(() => {
-  console.log(route.fullPath)
   return route.fullPath === '/management';
 })
 const defaultList = ref([

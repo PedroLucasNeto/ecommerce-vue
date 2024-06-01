@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes" class="btn" @click="method">
+  <button :class="classes" class="btn" @click="null">
     <slot>
       Click me
     </slot>
@@ -14,7 +14,6 @@ const classes = defineModel('classes', {
   default: 'btn btn-primary text-white'
 })
 
-const method = inject < () => void> ('method');
 </script>
 
 <style scoped></style>

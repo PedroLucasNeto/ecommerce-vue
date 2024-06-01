@@ -14,12 +14,11 @@
     </div>
 
   </div>
-  <section class="product-section">
+  <section class="product-section" v-if="products.length">
     <h2 class="text-3xl font-bold mt-10">Produtos em alta</h2>
     <!-- Add your product cards here -->
     <div class="flex gap-4 items-center justify-center mt-6  py-4">
-      <Product v-for="product in products.slice(0, 3)" :key="product.id" :image="product.image" :name="product.name"
-        :description="product.description" />
+      <Product v-for="product in products" :key="product.id" :product="product" />
     </div>
   </section>
   <section>
@@ -30,69 +29,18 @@
 <script setup>
 import CtaImageCard from '@/components/CtaImageCard.vue';
 import Product from "@/components/Product.vue";
-const products = [
-  {
-    id: 1,
-    image: "https://example.com/product2.jpg",
-    name: "Product 1",
-    description: "Description of Product 1",
-  },
-  {
-    id: 2,
-    image: "https://example.com/product3.jpg",
-    name: "Product 2",
-    description: "Description of Product 2",
-  },
-  {
-    id: 3,
-    image: "https://example.com/product4.jpg",
-    name: "Product 3",
-    description: "Description of Product 3",
-  },
-  {
-    id: 4,
-    image: "https://example.com/product5.jpg",
-    name: "Product 4",
-    description: "Description of Product 4",
-  },
-  {
-    id: 5,
-    image: "https://example.com/product5.jpg",
-    name: "Product 5",
-    description: "Description of Product 5",
-  },
-  {
-    id: 6,
-    image: "https://example.com/product6.jpg",
-    name: "Product 6",
-    description: "Description of Product 6",
-  },
-  {
-    id: 7,
-    image: "https://example.com/product7.jpg",
-    name: "Product 7",
-    description: "Description of Product 7",
-  },
-  {
-    id: 8,
-    image: "https://example.com/product8.jpg",
-    name: "Product 8",
-    description: "Description of Product 8",
-  },
-  {
-    id: 9,
-    image: "https://example.com/product9.jpg",
-    name: "Product 9",
-    description: "Description of Product 9",
-  },
-  {
-    id: 10,
-    image: "https://example.com/product10.jpg",
-    name: "Product 10",
-    description: "Description of Product 10",
-  }
+import { onMounted, ref } from 'vue';
+import productsService from '@/api/productsService.js';
+const products = ref([]);
 
-]
+async function getProducts () {
+  const response = await productsService.getAllProducts();
+  products.value = response;
+}
+
+onMounted(() => {
+  getProducts();
+});
 
 </script>
 

@@ -5,9 +5,8 @@
         <slot name="tableHead">
           <thead>
             <tr>
-              <th>#</th>
               <th v-for="(item, index) in tableFields" :key="index">
-                {{ item }}
+                {{ item.label }}
               </th>
             </tr>
           </thead>
@@ -15,8 +14,8 @@
         <slot name="tableBody">
           <tbody>
             <tr class="bg-base-200" v-for="(item, index) in tableData" :key="index">
-              <td v-for="(value, key) in item" :key="key">
-                <span>{{ value }}</span>
+              <td v-for="(field, index) in tableFields" :key="index">
+                <span>{{ item[field.conf] }}</span>
               </td>
               <td>
                 <button @click="editItem(item)">
@@ -35,7 +34,7 @@
       </table>
     </div>
 
-    <slot name="pagination">
+    <!-- <slot name="pagination">
       <div class="join">
         <button class="join-item btn">1</button>
         <button class="join-item btn">2</button>
@@ -43,12 +42,12 @@
         <button class="join-item btn">99</button>
         <button class="join-item btn">100</button>
       </div>
-    </slot>
+    </slot> -->
   </div>
 </template>
 
 <script setup>
-import { defineModel } from 'vue'
+import { defineModel, onMounted } from 'vue'
 
 const editItem = defineModel('editItem', {
   type: Function
@@ -67,6 +66,11 @@ const tableData = defineModel('tableData', {
 const tableFields = defineModel('tableFields', {
   type: Array,
   required: true
+})
+
+onMounted(() => {
+  console.log(tableData.value)
+  console.log(tableFields)
 })
 </script>
 
