@@ -1,35 +1,29 @@
 <template>
-  <nav class="flex justify-between w-full p-4 bg-lightblue items-center">
+  <nav class="flex justify-between w-full p-4  items-center">
     <div>LOGO</div>
 
     <ul class="flex justify-between space-x-4 items-center">
-      <RouterLink to="/home">Início</RouterLink>
-      <RouterLink to="/cart" v-if="!isAdmin">Carrinho</RouterLink>
-      <RouterLink to="/management" v-if="isAdmin">Gerenciamento</RouterLink>
+      <RouterLink to="/home" class="hover:text-secondary" active-class="text-primary">
+        <fa :icon="'fa-solid fa-home'"></fa>
+      </RouterLink>
+      <RouterLink to="/management" v-if="isAdmin" class="cursor-pointer hover:text-secondary"
+        active-class="text-primary">
+        <fa icon="fa-solid fa-gear" />
+      </RouterLink>
+      <fa :icon="'fa-solid fa-cart-shopping'" @click="toggleCart" class="cursor-pointer hover:text-secondary"
+        v-if="!isAdmin"></fa>
+      <ToggleTheme />
       <RouterLink to="/">Sair</RouterLink>
-      <fa :icon="theme === 'dark' ? 'moon' : 'sun'" />
-      <input type="checkbox" data-toggle-theme="light,dark" class="toggle toggle-primary" checked
-        @change="toggleTheme" />
     </ul>
   </nav>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
+import ToggleTheme from '@/components/ToggleTheme.vue';
 
 const isAdmin = computed(() => true);
 
-function toggleTheme() {
-  const toggle = document.querySelector('[data-toggle-theme]');
-  toggle.addEventListener('change', () => {
-    const theme = toggle.checked ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-  });
-}
-
-onMounted(() => {
-  toggleTheme();
-});
 </script>
 
 <style scoped></style>

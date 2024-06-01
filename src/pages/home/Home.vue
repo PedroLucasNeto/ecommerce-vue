@@ -15,16 +15,20 @@
 
   </div>
   <section class="product-section">
-    <h2 class="text-3xl font-bold mt-10">Produtos em Destaque</h2>
+    <h2 class="text-3xl font-bold mt-10">Produtos em alta</h2>
     <!-- Add your product cards here -->
-    <div class="flex flex-wrap gap-4 items-center justify-center mt-6 overflow-y-scroll max-h-full">
-      <Product v-for="product in products" :key="product.id" :image="product.image" :name="product.name"
+    <div class="flex gap-4 items-center justify-center mt-6  py-4">
+      <Product v-for="product in products.slice(0, 3)" :key="product.id" :image="product.image" :name="product.name"
         :description="product.description" />
     </div>
+  </section>
+  <section>
+    <CtaImageCard />
   </section>
 </template>
 
 <script setup>
+import CtaImageCard from '@/components/CtaImageCard.vue';
 import Product from "@/components/Product.vue";
 const products = [
   {
