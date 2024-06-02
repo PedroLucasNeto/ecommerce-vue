@@ -31,6 +31,10 @@ import CtaImageCard from '@/components/CtaImageCard.vue';
 import Product from "@/components/Product.vue";
 import { onMounted, ref } from 'vue';
 import productsService from '@/api/productsService.js';
+// import { useCartStore } from '@/stores/cartStore';
+
+// const cartStore = useCartStore();
+
 const products = ref([]);
 
 async function getProducts() {
