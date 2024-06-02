@@ -17,7 +17,7 @@
   <section class="product-section" v-if="products.length">
     <h2 class="text-3xl font-bold mt-10">Produtos em alta</h2>
     <!-- Add your product cards here -->
-    <div class="flex gap-4 items-center justify-center mt-6  py-4">
+    <div class="flex flex-wrap gap-4 items-center justify-center mt-6  py-4">
       <Product v-for="product in products" :key="product.id" :product="product" />
     </div>
   </section>
@@ -33,7 +33,7 @@ import { onMounted, ref } from 'vue';
 import productsService from '@/api/productsService.js';
 const products = ref([]);
 
-async function getProducts () {
+async function getProducts() {
   const response = await productsService.getAllProducts();
   products.value = response;
 }

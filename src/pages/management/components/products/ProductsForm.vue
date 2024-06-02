@@ -27,7 +27,15 @@ const product = defineModel('product', {
   type: Object
 })
 
-function setProductImage (e) {
+function clearForm() {
+  product.value.id = null;
+  product.value.name = '';
+  product.value.price = 0;
+  product.value.description = '';
+  product.value.image = '';
+}
+
+function setProductImage(e) {
   const file = e.target.files[0];
   if (file) {
     const reader = new FileReader();
@@ -38,19 +46,19 @@ function setProductImage (e) {
   }
 }
 
-async function saveProduct () {
+async function saveProduct() {
   try {
     await productsService.createProduct(product.value);
-    product.value = {};
+    clearForm();
   } catch (error) {
     console.log(error)
   }
 }
 
-async function editProduct () {
+async function editProduct() {
   try {
-    await productsService.updateProduct(product.value);
-    product.value = {};
+    await productsService.updateProductById(product.value.id, product.value);
+    clearForm();
   } catch (error) {
     console.log(error)
   }
