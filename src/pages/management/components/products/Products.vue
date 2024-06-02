@@ -73,11 +73,6 @@ onMounted(() => {
     getProducts()
 });
 
-onUpdated(() => {
-    if (!isOpen.value) {
-        getProducts()
-    }
-});
 
 watch(isOpen, async (newValue) => {
     if (newValue) {
@@ -86,6 +81,7 @@ watch(isOpen, async (newValue) => {
             formProduct.value.scrollIntoView({ behavior: 'smooth' });
         }
     } else {
+        getProducts()
         scrollTo(0, 0);
     }
 });

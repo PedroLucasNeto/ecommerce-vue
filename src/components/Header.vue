@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-between w-full p-4  items-center">
+  <nav class="flex justify-between w-full p-4 items-center">
     <div>LOGO</div>
 
     <ul class="flex justify-between space-x-4 items-center">
@@ -10,9 +10,8 @@
         active-class="text-primary">
         <fa icon="fa-solid fa-gear" />
       </RouterLink>
-      <fa :icon="'fa-solid fa-cart-shopping'" @click="toggleCart" class="cursor-pointer hover:text-secondary"
-        v-if="!isAdmin"></fa>
       <ToggleTheme />
+      <ToggleCart />
       <RouterLink to="/">Sair</RouterLink>
     </ul>
   </nav>
@@ -21,6 +20,7 @@
 <script setup>
 import { computed } from 'vue';
 import ToggleTheme from '@/components/ToggleTheme.vue';
+import ToggleCart from './ToggleCart.vue';
 
 const isAdmin = computed(() => true);
 

@@ -1,5 +1,5 @@
 <template>
-  <details class="dropdown bg-" ref="dropdown">
+  <details class="dropdown" ref="dropdown">
     <summary class="m-1 btn">
       <slot name="title">
         Gerenciar
@@ -25,7 +25,7 @@ const items = defineModel({
 })
 const dropdown = ref(null);
 
-function closeDropdown () {
+function closeDropdown() {
   dropdown.value.removeAttribute('open');
 }
 </script>
