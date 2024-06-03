@@ -16,14 +16,13 @@
                 <h1 class="font-bold">Pré visualização</h1>
                 <Product :product="product" />
             </div>
-            {{ product.name }}
         </div>
     </div>
 </template>
 
 <script setup>
 import Table from '@/components/Table.vue';
-import { ref, watch, nextTick, onMounted, computed, onUpdated } from 'vue';
+import { ref, watch, nextTick, onMounted, computed } from 'vue';
 import ProductsForm from './ProductsForm.vue';
 import productsService from '@/api/productsService.js';
 import Product from '@/components/Product.vue';
@@ -33,28 +32,28 @@ const formProduct = ref(null);
 const product = ref({})
 const data = ref([]);
 
-function createProduct() {
+function createProduct () {
     product.value = {};
     toggleForm();
 }
-function toggleForm() {
+function toggleForm () {
     isOpen.value = !isOpen.value;
 }
 
-function editItem(item) {
+function editItem (item) {
     product.value = item;
     toggleForm();
 }
-function deleteItem(item) {
+function deleteItem (item) {
     productsService.deleteProductById(item.id);
     getProducts();
 }
-function retrieveItem(item) {
+function retrieveItem (item) {
 }
 
 const fields = [{ label: '#', conf: 'id' }, { label: 'Nome', conf: 'name' }, { label: 'Preço', conf: 'price' }];
 
-async function getProducts() {
+async function getProducts () {
     const response = await productsService.getAllProducts();
     data.value = response;
 }
