@@ -2,7 +2,7 @@
   <div class="drawer drawer-end">
     <input id="my-drawer-4" type="checkbox" class="drawer-toggle" v-model="cartStore.isCartOpen" />
 
-    <div class="drawer-side ">
+    <div class="drawer-side">
       <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
       <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content relative">
         <div class="flex justify-between">
@@ -10,7 +10,13 @@
           <ToggleCart />
         </div>
         <h3 v-if="!cartStore.cartItems.length">Seu carrinho está vazio</h3>
-        <button v-else class="btn btn-error absolute bottom-5 text-white">Limpar Carrinho</button>
+        <button
+          v-else
+          class="btn btn-error absolute bottom-5 text-white"
+          @click="cartStore.clearItems()"
+        >
+          Limpar Carrinho
+        </button>
         <li v-for="item in cartStore.cartItems" :key="item.id" class="">
           <div class="flex justify-between items-center">
             <div>
@@ -35,11 +41,10 @@
 </template>
 
 <script setup>
-import { useCartStore } from '@/stores/cartStore';
-import ToggleCart from './ToggleCart.vue';
+import { useCartStore } from '@/stores/cartStore'
+import ToggleCart from './ToggleCart.vue'
 
-const cartStore = useCartStore();
-
+const cartStore = useCartStore()
 </script>
 
 <style scoped></style>
